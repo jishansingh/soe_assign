@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -111,7 +112,7 @@ class divideData{
 	        while(matchObj.find()) {
 	        	ans=true;
 	        	//System.out.println(matchObj.group());
-	        	updatehMap(operations[i],1);
+	        	//updatehMap(operations[i],1);
 	        	updateOperandMap(matchObj.group(1),1);
 		    }
 	        
@@ -183,6 +184,12 @@ class divideData{
         
          //as string can contain word like for
 		 pattern = "\".*?\"";
+		 commentPat  = Pattern.compile(pattern, Pattern.DOTALL);
+		 matchObj = commentPat.matcher(fileString);
+		 fileString = matchObj.replaceAll("");
+
+
+		 pattern = "\'.*?\'";
 		 commentPat  = Pattern.compile(pattern, Pattern.DOTALL);
 		 matchObj = commentPat.matcher(fileString);
 		 fileString = matchObj.replaceAll("");
@@ -358,4 +365,3 @@ public class Main {
 		f.printTable();
 	}
 }
-
